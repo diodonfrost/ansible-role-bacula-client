@@ -1,0 +1,34 @@
+# Install and configure Bacul-client on RedHat
+---
+
+- name: Install bacula-client package on RedHat
+  yum:
+    name: bacula-client
+    state: present
+  when:
+    - ansible_distribution_major_version != "5"
+
+
+- name: Install bacula-client package on RedHat 5
+  yum:
+    name: bacula-client
+    enablerepo: epel
+    state: present
+  when:
+    - ansible_distribution_major_version == "5"
+
+- name: Import bacula template
+  template:
+    src: bacula-fd.conf.j2
+    dest: /etc/bacula-fd.conf
+    owner: root
+    group: bacula
+    mode: 0660
+  notify:
+    - "(Handler: All OSs) Restart bacula-fd"
+
+- name: Manage bacula-fd service
+  service:
+    name: bacula-fd
+    state: started
+    enabled: yes

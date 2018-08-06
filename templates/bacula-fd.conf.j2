@@ -1,0 +1,47 @@
+#####################################
+##                                 ##
+## THIS FILE IS MANAGED BY ANSIBLE ##
+##                                 ##
+#####################################
+
+#
+# Default  Bacula File Daemon Configuration file
+#
+# Copyright (C) 2000-2015 Kern Sibbald
+# License: BSD 2-Clause; see file LICENSE-FOSS
+#
+
+#
+# List Directors who are permitted to contact this File daemon
+#
+Director {
+  Name = {{ bacula_director_name }}
+  Password = "{{ bacula_director_password }}"
+}
+
+#
+# Restricted Director, used by tray-monitor to get the
+#   status of the file daemon
+#
+Director {
+  Name = {{ bacula_monitor_name }}
+  Password = "{{ bacula_monitor_password }}"
+  Monitor = yes
+}
+
+#
+# "Global" File daemon configuration specifications
+#
+FileDaemon {                          # this is me
+  Name = {{ bacula_daemon_name }}
+  FDport = {{ bacula_director_port }}                  # where we listen for the director
+  WorkingDirectory = /var/spool/bacula
+  Pid Directory = /var/run
+  Maximum Concurrent Jobs = {{ bacula_max_jobs }}
+}
+
+# Send all messages except skipped files back to Director
+Messages {
+  Name = Standard
+  director = {{ bacula_director_name }} = all, !skipped, !restored
+}
