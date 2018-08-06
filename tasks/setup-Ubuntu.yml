@@ -9,7 +9,7 @@
 - name: Import bacula template
   template:
     src: bacula-fd.conf.j2
-    dest: /etc/bacula-fd.conf
+    dest: /etc/bacula/bacula-fd.conf
     owner: root
     group: bacula
     mode: 0660

@@ -19,8 +19,6 @@ env:
     version: 9
   - distribution: debian
     version: 8
-  - distribution: debian
-    version: 7
 
 before_install:
   # Build docker container
