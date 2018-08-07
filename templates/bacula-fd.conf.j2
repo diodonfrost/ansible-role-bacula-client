@@ -32,17 +32,12 @@ Director {
 #
 # "Global" File daemon configuration specifications
 #
-FileDaemon {                          # this is me
+FileDaemon {
   Name = {{ bacula_daemon_name }}
-  FDport = {{ bacula_director_port }}                  # where we listen for the director
-  {% if ansible_os_family == 'RedHat' %}
-  WorkingDirectory = /var/spool/bacula
-  Pid Directory = /var/run
-  {% endif %}
-  {% if ansible_os_family == 'Debian' %}
-  WorkingDirectory = /var/lib/bacula
-  Pid Directory = /var/run/bacula
-  {% endif %}
+  FDport = {{ bacula_director_port }}
+  WorkingDirectory = {{ WorkingDirectory }}
+  Pid Directory = {{ PidDirectory }}
+  Plugin Directory = {{ PluginDirectory }}
   Maximum Concurrent Jobs = {{ bacula_max_jobs }}
 }
 

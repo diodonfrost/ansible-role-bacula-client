@@ -1,0 +1,4 @@
+---
+WorkingDirectory: "/var/spool/bacula"
+PidDirectory: "/var/run"
+PluginDirectory: "/etc/bacula"

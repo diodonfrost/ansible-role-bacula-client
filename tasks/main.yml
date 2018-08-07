@@ -1,15 +1,9 @@
 ---
 # tasks file for ansible-role-bacula
 
+# Include variables and define needed variables.
+- name: Include OS specific variables.
+  include_vars: "{{ ansible_os_family }}.yml"
+
 # Setup tasks.
-- include_tasks: setup-RedHat.yml
-  when: ansible_os_family == 'RedHat'
-
-- include_tasks: setup-Debian.yml
-  when: ansible_distribution == 'Debian'
-
-- include_tasks: setup-Ubuntu.yml
-  when: ansible_distribution == 'Ubuntu'
-
-- include_tasks: setup-Windows.yml
-  when: ansible_distribution == 'Windows'
+- include_tasks: "setup-{{ ansible_os_family }}.yml"

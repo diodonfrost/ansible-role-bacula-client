@@ -1,0 +1,4 @@
+---
+WorkingDirectory: "C:\\Program Files\\Bacula\\working"
+PidDirectory: "C:\\Program Files\\Bacula\\working"
+PluginDirectory: "C:\\Program Files\\Bacula\\plugins"

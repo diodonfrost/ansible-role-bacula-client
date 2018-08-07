@@ -1,2 +1,9 @@
 ---
 # defaults file for ansible-role-bacula
+bacula_director_name: my-little-director-dir
+bacula_director_password: changeme
+bacula_monitor_name: mylittle-monitor-mon
+bacula_monitor_password: changeme
+bacula_daemon_name: mylittle-daemon-name
+bacula_director_port: 9102
+bacula_max_jobs: 20
