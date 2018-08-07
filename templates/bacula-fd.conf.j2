@@ -35,8 +35,14 @@ Director {
 FileDaemon {                          # this is me
   Name = {{ bacula_daemon_name }}
   FDport = {{ bacula_director_port }}                  # where we listen for the director
+  {% if ansible_os_family == 'RedHat' %}
   WorkingDirectory = /var/spool/bacula
   Pid Directory = /var/run
+  {% endif %}
+  {% if ansible_os_family == 'Debian' %}
+  WorkingDirectory = /var/lib/bacula
+  Pid Directory = /var/run/bacula
+  {% endif %}
   Maximum Concurrent Jobs = {{ bacula_max_jobs }}
 }
 
