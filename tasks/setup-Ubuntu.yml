@@ -14,7 +14,7 @@
     group: bacula
     mode: 0660
   notify:
-    - "(Handler: All OSs) Restart bacula-fd"
+    - "(Handler: All Linux OSs) Restart bacula-fd"
 
 - name: Manage bacula-fd service
   service:

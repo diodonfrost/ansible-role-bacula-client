@@ -15,6 +15,6 @@ control 'install-02' do
   desc 'Bacula-fd service should be started and enable'
   describe service('bacula-fd') do
     it { should be_running }
-    it { should be_enable }
+    it { should be_enabled }
   end
 end

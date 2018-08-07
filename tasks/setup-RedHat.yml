@@ -6,16 +6,14 @@
     name: bacula-client
     state: present
   when:
-    - ansible_distribution_major_version != "5"
+    - ansible_distribution != "Fedora"
 
-
-- name: Install bacula-client package on RedHat 5
-  yum:
+- name: Install bacula-client package on Fedora
+  dnf:
     name: bacula-client
-    enablerepo: epel
     state: present
   when:
-    - ansible_distribution_major_version == "5"
+    - ansible_distribution == "Fedora"
 
 - name: Import bacula template
   template:
@@ -25,7 +23,7 @@
     group: bacula
     mode: 0660
   notify:
-    - "(Handler: All OSs) Restart bacula-fd"
+    - "(Handler: All Linux OSs) Restart bacula-fd"
 
 - name: Manage bacula-fd service
   service:

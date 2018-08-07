@@ -1,0 +1,19 @@
+# Configure bacula client
+
+- name: Install Bacula package
+  win_chocolatey:
+    name: bacula
+    state: present
+
+- name: import bacula template
+  win_template:
+    src: 'win_bacula-fd.conf.template'
+    dest: 'C:\Program Files\Bacula\bacula-fd.conf'
+  notify:
+    - "(Handler: All Windows OSs) Restart bacula-fd"
+
+- name: Manage bacula-fd service
+  win_service:
+    name: Bacula-fd
+    state: started
+    start_mode: auto
