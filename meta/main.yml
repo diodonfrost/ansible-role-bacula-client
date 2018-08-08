@@ -3,7 +3,6 @@ galaxy_info:
   role_name: bacula-client
   author: diodonfrost
   description: Manage bacula-client
-  company:
 
   license: license Apache
 
