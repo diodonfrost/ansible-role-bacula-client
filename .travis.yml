@@ -16,6 +16,8 @@ env:
   - distribution: ubuntu
     version: 18.04
   - distribution: ubuntu
+    version: 17.10
+  - distribution: ubuntu
     version: 16.04
   - distribution: ubuntu
     version: 14.04
@@ -25,6 +27,10 @@ env:
     version: 9
   - distribution: debian
     version: 8
+  - distribution: oraclelinux-7
+    version: 7
+  - distribution: oraclelinux-6
+    version: 6
 
 before_install:
   # Build docker container

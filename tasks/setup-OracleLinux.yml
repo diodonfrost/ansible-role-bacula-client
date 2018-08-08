@@ -1,8 +1,8 @@
-# Install and configure Bacul-client on Debian
+# Install and configure Bacul-client on OracleLinux
 ---
 
-- name: install bacula-client package on Debian
-  apt:
+- name: Install bacula-client package on OracleLinux
+  yum:
     name: bacula-client
     state: present
 

@@ -1,4 +1,4 @@
 Gemfile.lock
 .kitchen
-.kitchen.local.yml
+.kitchen.vagrant.yml
 .kitchen.yml

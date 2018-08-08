@@ -1,6 +1,7 @@
-# Configure bacula client
+# Install and configure Bacul-client on Windows
+---
 
-- name: Install Bacula package
+- name: Install Bacula package on Windows
   win_chocolatey:
     name: bacula
     state: present
