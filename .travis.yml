@@ -4,33 +4,33 @@ services:
   - docker
 env:
   - distribution: centos
-    version: 7
+    version: "7"
   - distribution: centos
-    version: 6
+    version: "6"
   - distribution: fedora
-    version: 28
+    version: "28"
   - distribution: fedora
-    version: 27
+    version: "27"
   - distribution: fedora
-    version: 26
+    version: "26"
   - distribution: ubuntu
-    version: 18.04
+    version: "18.04"
   - distribution: ubuntu
-    version: 17.10
+    version: "17.10"
   - distribution: ubuntu
-    version: 16.04
+    version: "16.04"
   - distribution: ubuntu
-    version: 14.04
+    version: "14.04"
   - distribution: ubuntu
-    version: 12.04
+    version: "12.04"
   - distribution: debian
-    version: 9
+    version: "9"
   - distribution: debian
-    version: 8
-  - distribution: oraclelinux-7
-    version: 7
-  - distribution: oraclelinux-6
-    version: 6
+    version: "8"
+  - distribution: oraclelinux
+    version: "7"
+  - distribution: oraclelinux
+    version: "6"
 
 before_install:
   # Build docker container

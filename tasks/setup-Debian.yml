@@ -1,7 +1,10 @@
 # Install and configure Bacul-client on Debian
 ---
+- name: Update apt cache
+  apt:
+    update_cache: yes
 
-- name: install bacula-client package on Debian
+- name: install bacula-client package on Debian/Ubuntu
   apt:
     name: bacula-client
     state: present
