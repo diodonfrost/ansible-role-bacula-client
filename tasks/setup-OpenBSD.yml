@@ -1,0 +1,23 @@
+# Install and configure Bacul-client on OpenBSD
+---
+
+- name: Install bacula-client package on OpenBSD
+  openbsd_pkg:
+    name: bacula-client
+    state: present
+
+- name: Import bacula template
+  template:
+    src: bacula-fd.conf.j2
+    dest: /etc/bacula/bacula-fd.conf
+    owner: root
+    group: _bacula
+    mode: 0660
+  notify:
+    - "(Handler: All OpenBSD OSs) Restart bacula-fd"
+
+- name: Manage bacula-fd service
+  service:
+    name: bacula_fd
+    state: started
+    enabled: yes

@@ -1,0 +1,23 @@
+# Install and configure Bacul-client on FreeBSD
+---
+
+- name: Install bacula-client package on FreeBSD
+  pkgng:
+    name: bacula-client
+    state: present
+
+- name: Import bacula template
+  template:
+    src: bacula-fd.conf.j2
+    dest: /usr/local/etc/bacula/bacula-fd.conf
+    owner: root
+    group: bacula
+    mode: 0660
+  notify:
+    - "(Handler: All Linux/Unix OSs) Restart bacula-fd"
+
+- name: Manage bacula-fd service
+  service:
+    name: bacula-fd
+    state: started
+    enabled: yes

@@ -1,0 +1,4 @@
+---
+WorkingDirectory: "/var/db/bacula"
+PidDirectory: "/var/run"
+PluginDirectory: "/usr/local/lib"

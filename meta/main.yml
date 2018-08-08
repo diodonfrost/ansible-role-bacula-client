@@ -12,25 +12,40 @@ galaxy_info:
   platforms:
     - name: RedHat
       versions:
-      - 6
-      - 7
+        - 6
+        - 7
     - name: Fedora
       versions:
-      - 28
-      - 27
-      - 26
+        - 28
+        - 27
+        - 26
     - name: Debian
       versions:
-      - 9
-      - 8
-      - 7
+        - 9
+        - 8
     - name: Ubuntu
       versions:
-      - 18.04
-      - 17.04
-      - 16.04
-      - 14.04
-      - 12.04
+        - 18.04
+        - 17.10
+        - 16.04
+        - 14.04
+        - 12.04
+    - name: OracleLinux
+      versions:
+        - 7
+        - 6
+    - name: FreeBSD
+      versions:
+        - 11
+        - 10.3
+    - name: OpenBSD
+      versions:
+        - 6
+    - name: Windows
+      versions:
+        - 2016
+        - 2012R2
+        - 2008R2
 
   galaxy_tags:
    - system
