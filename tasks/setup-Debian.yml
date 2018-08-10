@@ -3,6 +3,7 @@
 - name: Update apt cache
   apt:
     update_cache: yes
+  changed_when: false
 
 - name: install bacula-client package on Debian/Ubuntu
   apt:
