@@ -39,25 +39,26 @@ before_install:
 script:
   - container_id=$(mktemp)
 
-    # Run container and mount ansible role with it
+  # Run container and mount ansible role with it
   - 'sudo docker run --detach --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro --volume="${PWD}":/etc/ansible/roles/ansible-role-bacula-client:ro ${distribution}-${version}:ansible > "${container_id}"'
 
-    # Check syntax
+  # Check syntax
   - 'sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook -v /etc/ansible/roles/ansible-role-bacula-client/tests/test.yml --syntax-check'
 
-    # Run ansible playbook
+  # Run ansible playbook
   - 'sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook -v /etc/ansible/roles/ansible-role-bacula-client/tests/test.yml'
+
+  # Test indempotence
   - >
-    # Test indempotence
     sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook -v /etc/ansible/roles/ansible-role-bacula-client/tests/test.yml
     | grep -q 'changed=0.*failed=0'
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
 
-    # Test role
+  # Test role
   - 'inspec exec tests/inspec -t docker://$(cat ${container_id})'
 
-    # Delete container
+  # Delete container
   - 'sudo docker rm -f "$(cat ${container_id})"'
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
