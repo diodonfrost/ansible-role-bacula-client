@@ -1,4 +1,5 @@
 FROM debian:9
+MAINTAINER diodonfrost <keres@protonmail.com>
 
 RUN apt-get update -y && apt-get install -y --no-install-recommends \
     software-properties-common \
@@ -13,6 +14,7 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
     curl \
     gnupg2 \
     dirmngr \
+    openssh-server openssh-client \
  && rm -rf /var/lib/apt/lists/*
 
 RUN pip install --upgrade setuptools && pip install ansible
