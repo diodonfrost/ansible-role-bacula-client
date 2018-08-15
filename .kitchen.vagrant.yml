@@ -10,6 +10,7 @@ provisioner:
   require_chef_for_busser: false
   require_ruby_for_busser: false
   require_ansible_omnibus: false
+  idempotency_test: true
 
 # We use Inspec as testing framework
 verifier:
@@ -17,7 +18,7 @@ verifier:
   inspec_tests:
     - path: tests/inspec
 
-# Run test on centos 6 and centos 7
+# Build platforms
 platforms:
   - name: centos-7
   - name: centos-6
@@ -30,15 +31,31 @@ platforms:
   - name: ubuntu-14.04
   - name: debian-9
   - name: debian-8
+  - name: debian-7
   - name: oraclelinux-7
+    driver:
+      box: bento/oracle-7
   - name: oraclelinux-6
+    driver:
+      box: bento/oracle-6
   - name: freebsd-11
-  - name: freebsd-10.3
+    driver:
+      box: bento/freebsd-11
+      provision: true
+      vagrantfiles:
+        - tests/vagrant/vagrant_freebsd_target.rb
+  - name: freebsd-10.4
+    driver:
+      box: bento/freebsd-10.4
+      provision: true
+      vagrantfiles:
+        - tests/vagrant/vagrant_freebsd_target.rb
   - name: openbsd-6
-  - name: openbsd-5.6
-  - name: windows-2016
-  - name: windows-2012r2
-  - name: windows-2008r2
+    driver:
+      box: generic/openbsd6
+      provision: true
+      vagrantfiles:
+        - tests/vagrant/vagrant_openbsd_target.rb
 
 # Define playbook
 suites:
