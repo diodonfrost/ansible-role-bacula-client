@@ -12,6 +12,7 @@ provisioner:
   require_chef_for_busser: false
   require_ruby_for_busser: false
   require_ansible_omnibus: false
+  idempotency_test: true
 
 # We use Inspec as testing framework
 verifier:
@@ -19,65 +20,95 @@ verifier:
   inspec_tests:
     - path: tests/inspec
 
-# Run test on centos 6 and centos 7
 platforms:
-  - name: centos-7
+  - name: centos-7-ansible
     driver:
-      run_command: /usr/sbin/init
-      platform: centos
-  - name: centos-6
-    driver:
-      provision_command: yum install -y upstart
+      image: diodonfrost/centos-7-ansible
       run_command: /sbin/init
       platform: centos
-  - name: fedora-28
+      provision_command:
+        - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
+  - name: centos-6-ansible
     driver:
+      image: diodonfrost/centos-6-ansible
+      platform: centos
+      run_command: /sbin/init
+      provision_command:
+        - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
+  - name: fedora-28-ansible
+    driver:
+      image: diodonfrost/fedora-28-ansible
       run_command: /usr/sbin/init
       platform: centos
-  - name: fedora-27
+      provision_command:
+        - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
+  - name: fedora-27-ansible
     driver:
+      image: diodonfrost/fedora-27-ansible
       run_command: /usr/sbin/init
       platform: centos
-  - name: fedora-26
+      provision_command:
+        - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
+  - name: fedora-26-ansible
     driver:
+      image: diodonfrost/fedora-26-ansible
       run_command: /usr/sbin/init
       platform: centos
-  - name: ubuntu-18.04
+      provision_command:
+        - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
+  - name: ubuntu-18.04-ansible
     driver:
-      provision_command: apt-get install -y init
+      image: diodonfrost/ubuntu-18.04-ansible
       run_command: /sbin/init
       platform: ubuntu
-  - name: ubuntu-17.10
+      provision_command:
+        - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
+  - name: ubuntu-17.10-ansible
     driver:
-      provision_command: apt-get install -y init
+      image: diodonfrost/ubuntu-17.10-ansible
       run_command: /sbin/init
       platform: ubuntu
-  - name: ubuntu-16.04
+      provision_command:
+        - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
+  - name: ubuntu-16.04-ansible
     driver:
-      provision_command: apt-get install -y init
+      image: diodonfrost/ubuntu-16.04-ansible
       run_command: /sbin/init
       platform: ubuntu
-  - name: ubuntu-14.04
+      provision_command:
+        - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
+  - name: debian-9-ansible
     driver:
-      platform: ubuntu
-  - name: debian-9
-    driver:
-      provision_command: apt-get install -y systemd
+      image: diodonfrost/debian-9-ansible
       run_command: /bin/systemd
       platform: debian
-  - name: debian-8
+      provision_command:
+        - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
+  - name: debian-8-ansible
     driver:
+      image: diodonfrost/debian-8-ansible
       run_command: /sbin/init
       platform: debian
-  - name: oraclelinux-7
+      provision_command:
+        - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
+  - name: debian-7-ansible
     driver:
+      image: diodonfrost/debian-7-ansible
+      platform: debian
+  - name: oraclelinux-7-ansible
+    driver:
+      image: diodonfrost/oraclelinux-7-ansible
       run_command: /usr/sbin/init
       platform: centos
-  - name: oraclelinux-6
+      provision_command:
+        - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
+        - systemctl enable sshd
+  - name: oraclelinux-6-ansible
     driver:
-      provision_command: yum install -y upstart
+      image: diodonfrost/oraclelinux-6-ansible
       run_command: /sbin/init
       platform: centos
+
 
 # Define playbook
 suites:
