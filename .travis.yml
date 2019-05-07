@@ -16,8 +16,6 @@ env:
   - distribution: ubuntu
     version: "18.04"
   - distribution: ubuntu
-    version: "17.10"
-  - distribution: ubuntu
     version: "16.04"
   - distribution: ubuntu
     version: "14.04"
@@ -27,8 +25,6 @@ env:
     version: "9"
   - distribution: debian
     version: "8"
-  - distribution: debian
-    version: "7"
   - distribution: oraclelinux
     version: "7"
   - distribution: oraclelinux
