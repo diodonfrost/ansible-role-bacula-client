@@ -10,8 +10,7 @@
   win_template:
     src: 'bacula-fd.conf.j2'
     dest: 'C:\Program Files\Bacula\bacula-fd.conf'
-  notify:
-    - "(Handler: All Windows OSs) Restart bacula-fd"
+  notify: "(Handler: All Windows OSs) Restart bacula-fd"
 
 - name: Manage bacula-fd service
   win_service:

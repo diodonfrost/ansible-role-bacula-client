@@ -5,15 +5,13 @@
   yum:
     name: bacula-client
     state: present
-  when:
-    - ansible_distribution != "Fedora"
+  when: ansible_pkg_mgr == "yum"
 
 - name: Install bacula-client package on Fedora
   dnf:
     name: bacula-client
     state: present
-  when:
-    - ansible_distribution == "Fedora"
+  when: ansible_pkg_mgr == "dnf"
 
 - name: Import bacula template
   template:
@@ -22,8 +20,7 @@
     owner: root
     group: bacula
     mode: 0660
-  notify:
-    - "(Handler: All Linux/Unix OSs) Restart bacula-fd"
+  notify: "(Handler: All Linux/Unix OSs) Restart bacula-fd"
 
 - name: Manage bacula-fd service
   service:

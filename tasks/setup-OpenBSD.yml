@@ -13,8 +13,7 @@
     owner: root
     group: _bacula
     mode: 0660
-  notify:
-    - "(Handler: All OpenBSD OSs) Restart bacula-fd"
+  notify: "(Handler: All OpenBSD OSs) Restart bacula-fd"
 
 - name: Manage bacula-fd service
   service:
