@@ -21,6 +21,15 @@ verifier:
     - path: tests/inspec
 
 platforms:
+
+  # CentOS
+  - name: centos-8-ansible
+    driver:
+      image: diodonfrost/centos-8-ansible
+      run_command: /sbin/init
+      platform: centos
+      provision_command:
+        - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
   - name: centos-7-ansible
     driver:
       image: diodonfrost/centos-7-ansible
@@ -35,6 +44,8 @@ platforms:
       run_command: /sbin/init
       provision_command:
         - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
+  
+  # Fedora
   - name: fedora-28-ansible
     driver:
       image: diodonfrost/fedora-28-ansible
@@ -56,6 +67,8 @@ platforms:
       platform: centos
       provision_command:
         - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
+  
+  # Ubuntu
   - name: ubuntu-18.04-ansible
     driver:
       image: diodonfrost/ubuntu-18.04-ansible
@@ -77,6 +90,8 @@ platforms:
       platform: ubuntu
       provision_command:
         - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
+
+  # Debian
   - name: debian-9-ansible
     driver:
       image: diodonfrost/debian-9-ansible
@@ -95,6 +110,16 @@ platforms:
     driver:
       image: diodonfrost/debian-7-ansible
       platform: debian
+
+  # Oraclelinux
+  - name: oraclelinux-8-ansible
+    driver:
+      image: diodonfrost/oraclelinux-8-ansible
+      run_command: /usr/sbin/init
+      platform: centos
+      provision_command:
+        - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
+        - systemctl enable sshd
   - name: oraclelinux-7-ansible
     driver:
       image: diodonfrost/oraclelinux-7-ansible
