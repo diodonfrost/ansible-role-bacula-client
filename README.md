@@ -15,19 +15,26 @@ Supported platforms:
 ```yaml
 - name: EL
   versions:
-    - 6
+    - 8
     - 7
+    - 6
 - name: Fedora
   versions:
+    - 32
+    - 31
+    - 30
+    - 29
     - 28
     - 27
     - 26
 - name: Debian
   versions:
+    - buster
     - stretch
     - jessie
 - name: Ubuntu
   versions:
+    - disco dingo
     - bionic
     - artful
     - xenial
@@ -35,6 +42,7 @@ Supported platforms:
     - precise
 - name: OracleLinux
   versions:
+    - 8
     - 7
     - 6
 - name: FreeBSD
