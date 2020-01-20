@@ -1,7 +1,7 @@
 # bacula-client (Ansible Role)
 
 [![Ansible Galaxy](https://img.shields.io/badge/galaxy-diodonfrost.bacula_client-660198.svg)](https://galaxy.ansible.com/diodonfrost/bacula_client)
-[![Build Status](https://travis-ci.org/diodonfrost/ansible-role-bacula-client.svg?branch=master)](https://travis-ci.org/diodonfrost/ansible-role-bacula-client)
+[![Build Status](https://travis-ci.com/diodonfrost/ansible-role-bacula-client.svg?branch=master)](https://travis-ci.com/diodonfrost/ansible-role-bacula-client)
 
 This role install and configure Bacula-client on your target host.
 
