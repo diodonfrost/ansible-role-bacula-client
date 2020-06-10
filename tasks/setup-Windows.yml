@@ -6,6 +6,16 @@
     name: bacula
     state: present
 
+- name: Firewall rule to allow port bacula server
+  win_firewall_rule:
+    name: Bacula Backup
+    localport: 9101-9103
+    action: allow
+    direction: in
+    protocol: tcp
+    state: present
+    enabled: yes
+
 - name: import bacula template
   win_template:
     src: 'bacula-fd.conf.j2'
